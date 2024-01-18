@@ -66,9 +66,9 @@
 
                 </div>
                     <div class="mx-5 md:mx-10">
-               <!-- <p class="my-5 md:text-2xl text-xl tx-sm text-red-500 font-bold">PLS, AVOID ANY
-                    DISTRACTIONS AND DO NOT CLOSE THE TAB</p>-->
-                  <!--  <ul class="space-y-4 text-left mt-5 text-gray-500 dark:text-gray-400 text-lg tx-lg border-2 border-dashed border-red-700 rounded-md p-5" data-aos="fade-up">
+               <p class="my-5 md:text-2xl text-xl tx-sm text-red-500 font-bold">PLS, AVOID ANY
+                    DISTRACTIONS AND DO NOT CLOSE THE TAB</p>
+                  <ul class="space-y-4 text-left mt-5 text-gray-500 dark:text-gray-400 text-lg tx-lg border-2 border-dashed border-red-700 rounded-md p-5" data-aos="fade-up">
     <li class="flex items-center space-x-3 rtl:space-x-reverse">
         <svg class="flex-shrink-0 w-5 h-5 text-diamond dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
@@ -96,22 +96,18 @@
  <span class="font-semibold text-gray-900 dark:text-white">Click the link below after you've done seeing the video training.</span>
     </li>
     
-</ul>-->
-                   <!-- <a href="https://wa.link/mja558"
-                        class="text-lg md:text-2xl link-btn mt-3 inline-block  tx-diamond-2 font-semibold relative leading-none uppercase">I
-                        want to get started now</a>-->
+</ul>
+                  
                         <p class="text-center py-5">
-<img id="imageGif" src="./amappics/arrowdown.gif" alt="arrow down gif" class="w-32 mt-10 mx-auto">
+<img id="imageGif" src="./amappics/arrowdown.gif" alt="arrow down gif" class="w-32 mt-10 mx-auto hidden">
           <button id="videoButton" href=""
         class="text-white py-2 px-7 rounded-md text-center block rounded-md font-bold text-2xl mt-10"
         style="background-color: #999; transition: background-color 0.5s ease;" disabled>
-    <a class="" href="https://wa.link/mja558"></a> SHOW ME HOW TO START!
+    <a class="" href="https://wa.link/mja558"></a> I WANT TO START NOW!
 </button><span class="mb-10 mt-2 text-sm font-light">This button will be active soon. Keep learning from the video.</span>
-
-                </p>
-
-                </div>
-            </section>
+</p>
+</div>
+</section>
              
         </article>
     </main>
@@ -120,7 +116,7 @@
     <footer class="bg-diamond text-white">
         
         <div class="text-center mt-8 py-4">
-            <p class="text-sm">&copy; 2023 Adenaike Idris. All rights reserved.</p>
+            <p class="text-sm">&copy; 2024 Adenaike Idris. All rights reserved.</p>
         </div>
     </footer>
     
@@ -191,11 +187,16 @@ function checkVideoTime() {
     var videoDuration = player.getDuration();
 
     // Check if the video is within the last ten minutes and has at least 20 minutes of watch time
-    if (videoDuration - currentTime <= 600 && currentTime >= 1200) {
+  //  if (videoDuration - currentTime <= 600 && currentTime >= 1200) {
+     if (videoDuration - currentTime <= 600) {
+
         //console.log('Within the last ten minutes and at least 20 minutes of watch time');
         
         // Enable the button and change the background color with animation
-        var button = document.getElementById('videoButton');
+        let button = document.getElementById('videoButton');
+        let imageGif = document.getElementById('imageGif');
+        imageGif.classList.remove('hidden');
+
         button.disabled = false;
         button.style.backgroundColor = '#113247'; // Update to your desired color
         button.classList.add('floaty3');
