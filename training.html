@@ -165,24 +165,34 @@ var player;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('youtubeVideo', {
+        playerVars: {
+            'controls': 0, // Hide player controls
+        },
         events: {
-            'onStateChange': onPlayerStateChange
+            'onStateChange': onPlayerStateChange,
+            'onReady': onPlayerReady
         }
     });
 }
 
-function onPlayerStateChange(event) {
-   // console.log('Video state changed:', event.data);
+function onPlayerReady(event) {
+    // Add an event listener for the double-click event on the video player
+    var videoPlayer = document.getElementById('youtubeVideo');
+    videoPlayer.addEventListener('dblclick', function (e) {
+        e.preventDefault();
+    });
+}
 
+function onPlayerStateChange(event) {
     // Check if the video is currently playing
     if (event.data == YT.PlayerState.PLAYING) {
-       // console.log('Video is playing');
         // Start a timer to periodically check the playback time
         setInterval(checkVideoTime, 1000); // Check every second
     }
 }
 
 function checkVideoTime() {
+    // Your existing code for checking video time and enabling the button
     var currentTime = player.getCurrentTime();
     var videoDuration = player.getDuration();
 
