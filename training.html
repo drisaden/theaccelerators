@@ -131,65 +131,8 @@
   
 
    <script>
-/*     var player;
-
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('youtubeVideo', {
-        events: {
-            'onStateChange': onPlayerStateChange
-        }
-    });
-}
-
-function onPlayerStateChange(event) {
-    // Check if the video is currently playing
-    if (event.data == YT.PlayerState.PLAYING) {
-        // Start a timer to periodically check the playback time
-        setInterval(checkVideoTime, 1000); // Check every second
-    }
-}
-
-function checkVideoTime() {
-    var currentTime = player.getCurrentTime();
-    var videoDuration = player.getDuration();
-
-    // Check if the video is within the last ten seconds
-    if (videoDuration - currentTime <= 10) {
-        // Enable the button
-        document.getElementById('ctaButton').disabled = false;
-    }
-}*/
 
 /*var player;
-
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('youtubeVideo', {
-        events: {
-            'onStateChange': onPlayerStateChange
-        }
-    });
-}
-
-function onPlayerStateChange(event) {
-    // Check if the video is currently playing
-    if (event.data == YT.PlayerState.PLAYING) {
-        // Start a timer to periodically check the playback time
-        setInterval(checkVideoTime, 1000); // Check every second
-    }
-}
-
-function checkVideoTime() {
-    var currentTime = player.getCurrentTime();
-
-    // Check if the video is within the first five seconds
-    if (currentTime <= 5) {
-        // Enable the button
-        document.getElementById('ctaButton').disabled = false;
-    }
-}
-*/
-
-var player;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('youtubeVideo', {
@@ -223,7 +166,45 @@ function checkVideoTime() {
         button.style.backgroundColor = '#FF0000'; // Update to your desired color
         button.classList.add('floaty3');
     }
+}*/
+
+var player;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtubeVideo', {
+        events: {
+            'onStateChange': onPlayerStateChange
+        }
+    });
 }
+
+function onPlayerStateChange(event) {
+    console.log('Video state changed:', event.data);
+
+    // Check if the video is currently playing
+    if (event.data == YT.PlayerState.PLAYING) {
+        console.log('Video is playing');
+        // Start a timer to periodically check the playback time
+        setInterval(checkVideoTime, 1000); // Check every second
+    }
+}
+
+function checkVideoTime() {
+    var currentTime = player.getCurrentTime();
+    var videoDuration = player.getDuration();
+
+    // Check if the video is within the last ten minutes and has at least 20 minutes of watch time
+    if (videoDuration - currentTime <= 600 && currentTime >= 1200) {
+        console.log('Within the last ten minutes and at least 20 minutes of watch time');
+        
+        // Enable the button and change the background color with animation
+        var button = document.getElementById('videoButton');
+        button.disabled = false;
+        button.style.backgroundColor = '#FF0000'; // Update to your desired color
+        button.classList.add('floaty3');
+    }
+}
+
 
    </script>
 </body>
