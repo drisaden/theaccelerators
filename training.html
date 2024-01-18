@@ -27,6 +27,7 @@
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <link rel="icon" type="image/png" href="./amappics/calebqatar.jpeg">
     <link rel="stylesheet" href="./amappics/style.css">
+    <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 
 <body>
@@ -56,15 +57,18 @@
                 </h2>
 
                 <div class="mt-6 flex justify-center align-center">
-                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/POminprA8as"
+                   <!-- <iframe id="youtubeVideo" width="100%" height="400" src="https://www.youtube.com/embed/POminprA8as"
    title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;"
-                         allowfullscreen></iframe>
+                         allowfullscreen></iframe>-->
+                         
+                         <iframe id="youtubeVideo" width="560" height="315" src="https://www.youtube.com/embed/POminprA8as?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+
                 </div>
                     <div class="mx-5 md:mx-10">
                <!-- <p class="my-5 md:text-2xl text-xl tx-sm text-red-500 font-bold">PLS, AVOID ANY
                     DISTRACTIONS AND DO NOT CLOSE THE TAB</p>-->
-                    <ul class="space-y-4 text-left mt-5 text-gray-500 dark:text-gray-400 text-lg tx-lg border-2 border-dashed border-red-700 rounded-md p-5" data-aos="fade-up">
+                  <!--  <ul class="space-y-4 text-left mt-5 text-gray-500 dark:text-gray-400 text-lg tx-lg border-2 border-dashed border-red-700 rounded-md p-5" data-aos="fade-up">
     <li class="flex items-center space-x-3 rtl:space-x-reverse">
         <svg class="flex-shrink-0 w-5 h-5 text-diamond dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
@@ -92,15 +96,21 @@
  <span class="font-semibold text-gray-900 dark:text-white">Click the link below after you've done seeing the video training.</span>
     </li>
     
-</ul>
+</ul>-->
                    <!-- <a href="https://wa.link/mja558"
                         class="text-lg md:text-2xl link-btn mt-3 inline-block  tx-diamond-2 font-semibold relative leading-none uppercase">I
                         want to get started now</a>-->
                         <p class="text-center">
 <img src="./amappics/arrowdown.gif" alt="arrow down gif" class="w-32 mt-10 mx-auto">
-<a href="https://wa.link/mja558"
-                class="text-white bg-blue-500 py-2 px-7 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out  text-center block rounded-md font-bold text-2xl tx-mont my-10 floaty3">SHOW ME HOW TO START!
-                </a>
+<!--<button id="videoButton" href=""
+                class="text-white bg-blue-500 py-2 px-7 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out  text-center block rounded-md font-bold text-2xl tx-mont my-10 floaty3" disabled><a class="" href="https://wa.link/mja558"></a> SHOW ME HOW TO START!
+                </button>-->
+                <button id="videoButton" href=""
+        class="text-white py-2 px-7 rounded-md text-center block rounded-md font-bold text-2xl my-10"
+        style="background-color: #999; transition: background-color 0.5s ease;" disabled>
+    <a class="" href="https://wa.link/mja558"></a> SHOW ME HOW TO START!
+</button>
+
                 </p>
 
                 </div>
@@ -118,6 +128,104 @@
     </footer>
     
    <script src="./assets/js/main.js"></script>
+  
+
+   <script>
+/*     var player;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtubeVideo', {
+        events: {
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+function onPlayerStateChange(event) {
+    // Check if the video is currently playing
+    if (event.data == YT.PlayerState.PLAYING) {
+        // Start a timer to periodically check the playback time
+        setInterval(checkVideoTime, 1000); // Check every second
+    }
+}
+
+function checkVideoTime() {
+    var currentTime = player.getCurrentTime();
+    var videoDuration = player.getDuration();
+
+    // Check if the video is within the last ten seconds
+    if (videoDuration - currentTime <= 10) {
+        // Enable the button
+        document.getElementById('ctaButton').disabled = false;
+    }
+}*/
+
+/*var player;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtubeVideo', {
+        events: {
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+function onPlayerStateChange(event) {
+    // Check if the video is currently playing
+    if (event.data == YT.PlayerState.PLAYING) {
+        // Start a timer to periodically check the playback time
+        setInterval(checkVideoTime, 1000); // Check every second
+    }
+}
+
+function checkVideoTime() {
+    var currentTime = player.getCurrentTime();
+
+    // Check if the video is within the first five seconds
+    if (currentTime <= 5) {
+        // Enable the button
+        document.getElementById('ctaButton').disabled = false;
+    }
+}
+*/
+
+var player;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtubeVideo', {
+        events: {
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+function onPlayerStateChange(event) {
+    console.log('Video state changed:', event.data);
+
+    // Check if the video is currently playing
+    if (event.data == YT.PlayerState.PLAYING) {
+        console.log('Video is playing');
+        // Start a timer to periodically check the playback time
+        setInterval(checkVideoTime, 1000); // Check every second
+    }
+}
+
+function checkVideoTime() {
+    var currentTime = player.getCurrentTime();
+      var videoDuration = player.getDuration();
+      
+      // Check if the video is within the last ten seconds
+      if (videoDuration - currentTime <= 600) {
+        console.log('Within the last ten minutes');
+        // Enable the button and change the background color with animation
+        var button = document.getElementById('videoButton');
+        button.disabled = false;
+        button.style.backgroundColor = '#FF0000'; // Update to your desired color
+        button.classList.add('floaty3');
+    }
+}
+
+   </script>
 </body>
 
 </html
